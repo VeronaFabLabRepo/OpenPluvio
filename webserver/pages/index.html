@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it" ng-app="opApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>Openpluvio</title>
+
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/angular/angular-route.min.js"></script>
+        <script src="js/angular/angular-resource.min.js"></script>
+        <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="fa/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="light-blue lighten-1" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">OpenPluvio</a></div>
+        </nav>
+
+
+        <div ng-controller="opCtrl">
+            <div class="container">
+
+                <div class="section">
+                    <div class="row">
+                        <div class="input-field col s12 m4">
+
+                            <select id="mese_m">
+                                <option value="" disabled selected>Seleziona..</option>
+                                <option value="01">Gennaio</option>
+                                <option value="02">Febbraio</option>
+                                <option value="03">Marzo</option>
+                                <option value="04">Aprile</option>
+                                <option value="05">Maggio</option>
+                                <option value="06">Giugno</option>
+                                <option value="07">Luglio</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Settembre</option>
+                                <option value="10">Ottobre</option>
+                                <option value="11">Novembre</option>
+                                <option value="12">Dicembre</option>
+                            </select>
+                            <label>Precipitazioni nel mese di:</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <select id="anno_m" >
+                                <option value="" disabled selected>Seleziona..</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>
+                            <label>Anno:</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <button class="waves-effect waves-light btn light-blue lighten-1" ng-click="drawMonthlyPlot();"><i class="mdi-av-play-arrow"></i>Carica</button>
+                        </div>
+                    </div>
+                    <div id="openpluviograph_monthly"></div>
+                </div>
+
+                <div class="section">
+                    <div class="row">
+                        <div class="input-field col s12 m3">
+                            <select id="giorno_d" >
+                                <option value="" disabled selected>Seleziona..</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                            </select>
+                            <label for="giorno_d">Precipitazioni il giorno:</label>
+                        </div>
+                        <div class="input-field col s12 m3">
+                            <select id="mese_d" >
+                                <option value="" disabled selected>Seleziona..</option>
+                                <option value="01">Gennaio</option>
+                                <option value="02">Febbraio</option>
+                                <option value="03">Marzo</option>
+                                <option value="04">Aprile</option>
+                                <option value="05">Maggio</option>
+                                <option value="06">Giugno</option>
+                                <option value="07">Luglio</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Settembre</option>
+                                <option value="10">Ottobre</option>
+                                <option value="11">Novembre</option>
+                                <option value="12">Dicembre</option>
+                            </select>
+                            <label>Mese:</label>
+                        </div>
+                        <div class="input-field col s12 m3">
+                            <select id="anno_d" >
+                                <option value="" disabled selected>Seleziona..</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>
+                            <label>Anno:</label>
+                        </div>
+                        <div class="input-field col s12 m3">
+                            <button class="waves-effect waves-light btn light-blue lighten-1" ng-click="drawDailyPlot();"><i class="mdi-av-play-arrow"></i>Carica</button>
+                        </div>
+                    </div>
+                    <div id="openpluviograph_daily"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="main">
+            <div ng-view></div>
+        </div>
+
+        <footer class="page-footer light-blue lighten-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 m6 s12">
+                        <h5 class="white-text">OpenPluvio</h5>
+                        <p class="grey-text text-lighten-4"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Made with <i class="fa fa-heart"></i> by <a class="orange-text text-lighten-3" href="http://plumake.it">Plumake</a>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="js/jquery/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/highcharts/highcharts.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
