@@ -13,7 +13,7 @@ from ablib import Pin
 from time import sleep
 import sqlite3
 
-DBNAME = '/var/www/openpluvio/db/openpluvio'
+DBNAME = '/var/www/OpenPluvio/db/openpluvio'
 
 def basculata():
     connection = sqlite3.connect(DBNAME)
