@@ -11,7 +11,7 @@
 #
 # By default this script does nothing.
 
-cd /var/www/openpluvio
+cd /var/www/OpenPluvio
 hostapd hostapd.conf &
 python bascula2db.py &
 python webserver/ws.py &
