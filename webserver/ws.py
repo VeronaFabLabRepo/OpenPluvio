@@ -22,7 +22,7 @@ import threading
 import sqlite3
 import json
 
-DBNAME = '/var/www/openpluvio/db/openpluvio'
+DBNAME = '/var/www/OpenPluvio/db/openpluvio'
 port = 8888
 
 class main_page(tornado.web.RequestHandler):
