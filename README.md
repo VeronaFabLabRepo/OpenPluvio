@@ -39,6 +39,28 @@ Il pluviometro va esposto a campo. Ad ogni basculata verrà salvato sul database
 Per accedere ai dati bisogna collegarsi con smarphone/tablet/pc alla wifi aperta "OpenPluvio" generata 
 da OpenPluvio e puntare il browser su 192.168.10.10:8888 per visualizzare la pagina principale.
 
+### Deploy ###
+
+* collegare Arietta con cavo USB al proprio pc
+* seguire le istruzioni "getting started" sul sito [ACME Systems](http://www.acmesystems.it)
+* `sudo dd if=arietta_ledpanel.img of=/dev/sdb`
+* `ssh root@192.168.10.10` con password `acmesystems`
+* `nano /etc/resolv.conf` cambiare ip gateway se necessario
+* `ping www.plumake.it` per testare la connessione verso l'esterno
+* `/etc/init.d/ntp restart`
+* `date` per controllare che la data sia corretta
+* `apt-get update && apt-get install sqlite php5-sqlite python-smbus` per installare le dipendenze
+* `cd /var/www/`
+* `git clone git://github.com/tanzilli/ablib.git`
+* `cd ablib`
+* `python setup.py install`
+* `cd ..`
+* `git clone https://github.com/VeronaFabLabRepo/OpenPluvio.git`
+* `cp OpenPluvio/rc.local /etc/rc.local`
+* `shutdown -r now`
+*  testare che venga creata una wifi hotspot con essid "OpenPluvio"
+*  connettersi a 192.168.10.10:8888
+
 ### Come contribuire ###
 
 Il progetto è in una fase molto primitiva di sviluppo, sono stati realizzati i primi prototipi funzionanti.
